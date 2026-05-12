@@ -38,6 +38,7 @@ public class ConceptAndCodingPlayGroundApplication implements WebMvcConfigurer {
 	public FilterRegistrationBean<MyFilter1> myFilter1(){
 		FilterRegistrationBean<MyFilter1> myFilterRegistrationBean = new FilterRegistrationBean<>();
 		myFilterRegistrationBean.setFilter(new MyFilter1());
+		// For all the api's
 		myFilterRegistrationBean.addUrlPatterns("/*");
 		myFilterRegistrationBean.setOrder(2);
 		return myFilterRegistrationBean;
@@ -47,6 +48,7 @@ public class ConceptAndCodingPlayGroundApplication implements WebMvcConfigurer {
 	public FilterRegistrationBean<MyFilter2> myFilter2(){
 		FilterRegistrationBean<MyFilter2> myFilter2FilterRegistrationBean = new FilterRegistrationBean<>();
 		myFilter2FilterRegistrationBean.setFilter(new MyFilter2());
+		// For all the api's
 		myFilter2FilterRegistrationBean.addUrlPatterns("/*");
 		myFilter2FilterRegistrationBean.setOrder(1);
 		return myFilter2FilterRegistrationBean;
