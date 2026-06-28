@@ -1,4 +1,4 @@
-package com.example.conceptAndCodingPlayGround;
+package com.example.conceptAndCodingPlayGround.exception;
 
 import org.springframework.http.HttpStatus;
 

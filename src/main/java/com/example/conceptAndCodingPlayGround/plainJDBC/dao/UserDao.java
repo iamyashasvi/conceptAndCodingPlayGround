@@ -1,15 +1,14 @@
-package com.example.conceptAndCodingPlayGround.PlainJDBC.DAO;
+package com.example.conceptAndCodingPlayGround.plainJDBC.dao;
 
-import com.example.conceptAndCodingPlayGround.PlainJDBC.DatabaseConnection;
+import com.example.conceptAndCodingPlayGround.plainJDBC.DatabaseConnection;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import com.example.conceptAndCodingPlayGround.User;
+import com.example.conceptAndCodingPlayGround.model.User;
 import java.util.List;
 
 public class UserDao {

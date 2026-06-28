@@ -1,4 +1,4 @@
-package com.example.conceptAndCodingPlayGround;
+package com.example.conceptAndCodingPlayGround.controller;
 
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;

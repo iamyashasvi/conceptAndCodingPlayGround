@@ -1,4 +1,4 @@
-package com.example.conceptAndCodingPlayGround;
+package com.example.conceptAndCodingPlayGround.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

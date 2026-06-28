@@ -1,9 +1,9 @@
-package com.example.conceptAndCodingPlayGround;
+package com.example.conceptAndCodingPlayGround.model;
 
 public class User{
-    String name;
+    public String name;
 
-    int age;
+    public int age;
     public User(String name, int age){
         this.name = name;
         this.age = age;

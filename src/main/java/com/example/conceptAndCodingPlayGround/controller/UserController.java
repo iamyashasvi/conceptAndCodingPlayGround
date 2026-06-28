@@ -1,7 +1,7 @@
-package com.example.conceptAndCodingPlayGround;
+package com.example.conceptAndCodingPlayGround.controller;
 
-import com.example.conceptAndCodingPlayGround.PlainJDBC.DAO.UserDao;
-import org.apache.coyote.Response;
+import com.example.conceptAndCodingPlayGround.model.User;
+import com.example.conceptAndCodingPlayGround.plainJDBC.dao.UserDao;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

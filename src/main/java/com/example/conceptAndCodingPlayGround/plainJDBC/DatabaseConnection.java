@@ -1,4 +1,4 @@
-package com.example.conceptAndCodingPlayGround.PlainJDBC;
+package com.example.conceptAndCodingPlayGround.plainJDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
