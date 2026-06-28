@@ -1,14 +1,61 @@
 package com.example.conceptAndCodingPlayGround;
 
+import com.example.conceptAndCodingPlayGround.PlainJDBC.DAO.UserDao;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 
 @RestController
 public class UserController {
+
+    public static final String successMessage = "Inserted One record successfully";
+
+    /*
+        curl --location --request POST 'http://localhost:8081/api/createTable' \
+            --header 'Content-Type: application/json'
+     */
+    @PostMapping(path = "/api/createTable")
+    public ResponseEntity<String> createTable(){
+        UserDao userDao = new UserDao();
+        userDao.createUserTable();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Table is created");
+    }
+
+    /*
+    curl --location 'http://localhost:8081/api/insert-one-user' \
+        --header 'Content-Type: application/json' \
+        --data '{
+            "name": "daddy",
+            "age": 63
+        }'
+     */
+    @PostMapping(path = "/api/insert-one-user")
+    public ResponseEntity<String> insertUser(@RequestBody User user){
+        UserDao userDao = new UserDao();
+        userDao.createUser(user.name, user.age);
+        System.out.println(successMessage);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(successMessage);
+    }
+
+    /*
+    curl --location 'http://localhost:8081/api/get-all-user-from-table'
+     */
+    @GetMapping(path = "/api/get-all-user-from-table")
+    public ResponseEntity<List<User>> getAllUser(){
+        UserDao userDao = new UserDao();
+        List<User> userList = userDao.readUser();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userList);
+    }
 
     @GetMapping(path = "/api/getUser1")
     public ResponseEntity<String> getUser1(){
