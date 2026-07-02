@@ -1,9 +1,24 @@
 package com.example.conceptAndCodingPlayGround.model;
 
 public class User{
+    public int userId;
     public String name;
-
     public int age;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    public User() {
+    }
+    public User(String name, int age, int userId) {
+        this.userId = userId;
+        this.name = name;
+        this.age = age;
+    }
     public User(String name, int age){
         this.name = name;
         this.age = age;

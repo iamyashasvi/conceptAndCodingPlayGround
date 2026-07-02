@@ -10,12 +10,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
+import com.example.conceptAndCodingPlayGround.repository.UserRepository;
 
 
 @RestController
 public class UserController {
 
     public static final String successMessage = "Inserted One record successfully";
+    private final UserRepository userRepository;
+
+    public UserController(UserRepository userRepository) {
+        /*
+            This is important to initialse only once because if we creat object every time it
+            with empty instance then null pointer exception occurs.
+         */
+
+        this.userRepository = userRepository;
+    }
 
     /*
         curl --location --request POST 'http://localhost:8081/api/createTable' \
@@ -57,6 +68,46 @@ public class UserController {
                 .body(userList);
     }
 
+    /*
+    User with plain JDBC.
+    curl --location --request POST 'http://localhost:8081/api/createTableWithSpringBoot' \
+    --header 'Content-Type: application/json'
+     */
+    @PostMapping(path = "/api/createTableWithSpringBoot")
+    public ResponseEntity<String> createTableWithSpringBoot(){
+        userRepository.createTable();
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("UserTableCreated");
+    }
+
+    /*
+    User with plain JDBC.
+        curl --location 'http://localhost:8081/api/insert-one-user-with-spring-boot' \
+        --header 'Content-Type: application/json' \
+        --data '{
+                "name": "mahi",
+                "age": 40
+           }'
+     */
+    @PostMapping(path = "/api/insert-one-user-with-spring-boot")
+    public ResponseEntity<String> insertUserWithSpringBoot(@RequestBody User user){
+        userRepository.insertUser(user.getName(), user.getAge());
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("InsertedUser");
+    }
+
+    /*
+    User with plain JDBC.
+        curl --location 'http://localhost:8081/api/get-all-user-from-table-with-spring-boot' \
+        --header 'Content-Type: application/json'
+     */
+    @GetMapping(path = "/api/get-all-user-from-table-with-spring-boot")
+    public List<User> getAllUserWithSpringBoot(){
+        List<User> listOfUser = userRepository.getUsers();
+        return listOfUser;
+    }
+
+
     @GetMapping(path = "/api/getUser1")
     public ResponseEntity<String> getUser1(){
         HttpHeaders headers = new HttpHeaders();
@@ -88,4 +139,3 @@ public class UserController {
         return userResponseObj;
     }
 }
-
